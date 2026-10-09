@@ -45,8 +45,10 @@ def hvr(df):
     # BOSWaves-inspired conservative confirmation, not an exact Pine port.
     if df is None or len(df)<245:return {"state":"n.v.","reason":"<245 abgeschlossene M15-Kerzen"}
     v=df["volume"] if "volume" in df else pd.Series(0,index=df.index)
-    if not (v.iloc[-240:] > 0).all():return {"state":"n.v.","reason":"Volumen fehlt"}
-    atr=(df["high"]-df["low"]).rolling(200).mean()
+    if (v.iloc[-240:] <= 0).any():return {"state":"n.v.","reason":"Volumen fehlt oder Nullwerte"}
+    prior=df["close"].shift(1)
+    true_range=pd.concat([df["high"]-df["low"],(df["high"]-prior).abs(),(df["low"]-prior).abs()],axis=1).max(axis=1)
+    atr=true_range.rolling(200,min_periods=200).mean()
     vs=v.rolling(20).mean()
     zones=[]
     for i in range(max(212,len(df)-200),len(df)-12):
@@ -60,15 +62,17 @@ def hvr(df):
             zones.append((i,"LONG" if bull else "SHORT",pivot,width))
     if not zones:return {"state":"NONE","reason":"Keine bestätigte Zone"}
     i,d,p,w=zones[-1]; last=df.iloc[-1];prev=df.iloc[-2]
+    # Hold and flip are distinct: a flip requires a zone break and subsequent retest.
+    earlier=df.iloc[i+13:-1]
     if d=="LONG":
         hold=last["low"]<=p+w and last["close"]>p
-        flip=prev["close"]<p and last["close"]>p+w
+        flip=(earlier["close"]<p).any() and prev["close"]>p+w and last["low"]<=p+w and last["close"]>p+w
         state="HOLD" if hold else "FLIP" if flip else "ZONE"
     else:
         hold=last["high"]>=p-w and last["close"]<p
-        flip=prev["close"]>p and last["close"]<p-w
+        flip=(earlier["close"]>p).any() and prev["close"]<p-w and last["high"]>=p-w and last["close"]<p-w
         state="HOLD" if hold else "FLIP" if flip else "ZONE"
-    return {"state":state,"direction":d,"pivot":round(p,5),"reason":"Pivot 12/12, RVOL und Wick bestätigt; vereinfachte Hold/Flip-Auswertung"}
+    return {"state":state,"direction":d,"pivot":round(p,5),"confirmed_at":df.index[i+12].isoformat(),"reason":"Pivot 12/12, RVOL, ATR200 und Wick; vereinfachte BOSWaves-inspirierte Hold/Flip-Auswertung"}
 def session(m,dt):
     h=dt.hour+dt.minute/60
     if m in ("US100Cash#","US30Cash#"):return 15.5<=h<17
@@ -83,6 +87,26 @@ def pbd_proxy(df):
     if move>2*rng and c.iloc[-1]>c.iloc[-20:-1].median():return "P (Proxy)"
     if move< -2*rng and c.iloc[-1]<c.iloc[-20:-1].median():return "B (Proxy)"
     return "D (Proxy)"
+def news_guard(m):
+    """Fail-closed calendar safety gate. No claim of verified complete news coverage."""
+    path="config/news_events.json"
+    try:
+        with open(path,encoding="utf8") as f:cfg=json.load(f)
+        checked=datetime.fromisoformat(cfg["verified_at"].replace("Z","+00:00"))
+        if checked.tzinfo is None:raise ValueError("Timezone missing")
+        if abs((NOW-checked).total_seconds())>12*3600:
+            return "UNGEPRÜFT","Kalenderprüfung älter als 12 Stunden"
+        for event in cfg.get("events",[]):
+            if event.get("impact")!="high":continue
+            affected=event.get("markets",[])
+            if m not in affected and "ALL" not in affected:continue
+            at=datetime.fromisoformat(event["time_utc"].replace("Z","+00:00"))
+            if at.tzinfo is None:continue
+            if abs((NOW-at).total_seconds())<=1800:
+                return "NEWS BLOCK",event.get("name","High-Impact-News")
+        return "TEILWEISE GEPRÜFT","Manuell gepflegter Kalender; Vollständigkeit nicht garantiert"
+    except Exception:return "UNGEPRÜFT","Kein aktueller verifizierter News-Kalender"
+
 def analyze(m,t):
     base={"market":m,"reference":t or "nicht zuordenbar","bias":"n.v.","m15":"n.v.","pbd":"n.v.","hvr":"n.v.","score":None,"news":"UNGEPRÜFT","status":"NO TRADE","reason":"Keine Daten","price":None}
     if not t:return {**base,"reason":"Broker-Symbol nicht eindeutig abbildbar"}
@@ -96,6 +120,7 @@ def analyze(m,t):
     price=float(m15["close"].iloc[-1]);age=(NOW-m15.index[-1].to_pydatetime()).total_seconds()/60
     stale=age>75
     hv=hvr(m15);pb=pbd_proxy(m15)
+    news_state,news_reason=news_guard(m)
     alignment=bias1==bias4 and bias1 in ("LONG","SHORT")
     aligned15=alignment and s15==bias1
     # M15 sweep/reclaim of previous candle; M5/M1 optional, not fabricated.
@@ -106,8 +131,10 @@ def analyze(m,t):
     active=session(m,NOW.astimezone(TZ))
     # News calendar not connected: never issue actionable SETUP.
     score=sum((alignment,aligned15,sweep,hv_ok,active,displacement))
-    return {**base,"price":round(price,6),"asof":m15.index[-1].isoformat(),"bias":bias1 if alignment else "UNKLAR","m15":s15 or "n.v.","pbd":pb,"hvr":hv["state"],"hvr_detail":hv,"score":score if not stale else None,"news":"UNGEPRÜFT","status":"WATCH" if not stale else "NO TRADE","reason":"News-Kalender nicht verifiziert; keine Handelsfreigabe"+("; Kerzen veraltet" if stale else ""),"session":active,"sweep_m15":bool(sweep),"displacement":bool(displacement),"score_components":{"HTF":bool(alignment),"M15":bool(aligned15),"Sweep":bool(sweep),"HVR":bool(hv_ok),"Session":bool(active),"Displacement":bool(displacement)}}
-out={"generated_at":NOW.isoformat(),"engine":"Intraday Atlas experimentell v0.2","live_execution":False,"news_verified":False,"warning":"Keine Handelsfreigabe. PbD ist nur ein Preis-Proxy, HVR eine vereinfachte BOSWaves-inspirierte Umsetzung. News nicht angebunden. Yahoo-Daten verzögert/fehlend möglich.","markets":[]}
+    # A proxy regime or incomplete volume cannot validate the actual PbD/HVR strategy.
+    safe_status="NEWS BLOCK" if news_state=="NEWS BLOCK" else ("WATCH" if not stale else "NO TRADE")
+    return {**base,"price":round(price,6),"asof":m15.index[-1].isoformat(),"bias":bias1 if alignment else "UNKLAR","m15":s15 or "n.v.","pbd":pb,"hvr":hv["state"],"hvr_detail":hv,"score":score if not stale else None,"news":news_state,"news_reason":news_reason,"status":safe_status,"reason":"PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe"+("; Kerzen veraltet" if stale else ""),"session":active,"sweep_m15":bool(sweep),"displacement":bool(displacement),"score_components":{"HTF":bool(alignment),"M15":bool(aligned15),"Sweep":bool(sweep),"HVR":bool(hv_ok),"Session":bool(active),"Displacement":bool(displacement)}}
+out={"generated_at":NOW.isoformat(),"engine":"Intraday Atlas experimentell v0.3","live_execution":False,"news_verified":False,"warning":"Keine Handelsfreigabe: PbD-Proxy und HVR-Approximation sind nicht die validierten Originalindikatoren. News-Sicherheitsfilter sperrt bei dokumentierten Ereignissen; ohne gepflegten Kalender ist die Prüfung unvollständig. Yahoo-Kurse können verzögert sein.","markets":[]}
 for m,t in MARKETS.items():
     try:out["markets"].append(analyze(m,t))
     except Exception as e:out["markets"].append({"market":m,"reference":t,"status":"NO TRADE","score":None,"reason":"Daten-/Berechnungsfehler: "+type(e).__name__})
