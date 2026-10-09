@@ -115,8 +115,10 @@ def analyze(m,t):
     m15=closed(fetch(t,"10d","15m"),15); h1=closed(fetch(t,"1mo","1h"),60)
     if m15 is None or h1 is None or len(m15)<45 or len(h1)<80:return {**base,"status":"WATCH","reason":"M15/H1 unvollständig"}
     # H4 via hourly completed four-hour UTC bars; partial periods discarded
-    h4=h1.resample("4h",origin="epoch").agg({"open":"first","high":"max","low":"min","close":"last"})
-    h4=h4.dropna()
+    # Keep only complete 4h buckets; incomplete H4 candles create false signals.
+    h4_ohlc=h1.resample("4h",origin="epoch").agg({"open":"first","high":"max","low":"min","close":"last"})
+    h4_count=h1["close"].resample("4h",origin="epoch").count()
+    h4=h4_ohlc.loc[h4_count.eq(4)].dropna()
     if len(h4)<25:return {**base,"status":"WATCH","reason":"H4 unvollständig"}
     bias1=swing(h1);bias4=swing(h4);s15=swing(m15)
     price=float(m15["close"].iloc[-1]);age=(NOW-m15.index[-1].to_pydatetime()).total_seconds()/60
@@ -136,7 +138,7 @@ def analyze(m,t):
     # A proxy regime or incomplete volume cannot validate the actual PbD/HVR strategy.
     safe_status="NEWS BLOCK" if news_state=="NEWS BLOCK" else ("WATCH" if not stale else "NO TRADE")
     return {**base,"price":round(price,6),"asof":m15.index[-1].isoformat(),"bias":bias1 if alignment else "UNKLAR","m15":s15 or "n.v.","pbd":pb,"hvr":hv["state"],"hvr_detail":hv,"score":score if not stale else None,"news":news_state,"news_reason":news_reason,"status":safe_status,"reason":"PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe"+("; Kerzen veraltet" if stale else ""),"session":active,"sweep_m15":bool(sweep),"displacement":bool(displacement),"score_components":{"HTF":bool(alignment),"M15":bool(aligned15),"Sweep":bool(sweep),"HVR":bool(hv_ok),"Session":bool(active),"Displacement":bool(displacement)}}
-out={"generated_at":NOW.isoformat(),"engine":"Intraday Atlas experimentell v0.4","live_execution":False,"news_verified":bool(CALENDAR.get("verified_at")),"calendar_provider":CALENDAR.get("provider"),"calendar_coverage":CALENDAR.get("coverage"),"calendar_event_count":len(CALENDAR.get("events",[])),"warning":"Keine Handelsfreigabe: PbD-Proxy und HVR-Approximation sind nicht die validierten Originalindikatoren. News-Sicherheitsfilter verwendet optional Trading Economics; ohne API-Key oder eindeutig zonierte Zeitstempel ist die Prüfung unvollständig. Yahoo-Kurse können verzögert sein.","markets":[]}
+out={"generated_at":NOW.isoformat(),"engine":"Intraday Atlas experimentell v0.5","live_execution":False,"pbd_hvr_validated":False,"validation_status":"REFERENZVERGLEICH AUSSTEHEND","news_verified":bool(CALENDAR.get("verified_at")),"calendar_provider":CALENDAR.get("provider"),"calendar_coverage":CALENDAR.get("coverage"),"calendar_event_count":len(CALENDAR.get("events",[])),"warning":"Keine Handelsfreigabe: PbD-Proxy und HVR-Approximation sind nicht die validierten Originalindikatoren. News-Sicherheitsfilter verwendet optional Trading Economics; ohne API-Key oder eindeutig zonierte Zeitstempel ist die Prüfung unvollständig. Yahoo-Kurse können verzögert sein.","markets":[]}
 for m,t in MARKETS.items():
     try:out["markets"].append(analyze(m,t))
     except Exception as e:out["markets"].append({"market":m,"reference":t,"status":"NO TRADE","score":None,"reason":"Daten-/Berechnungsfehler: "+type(e).__name__})
