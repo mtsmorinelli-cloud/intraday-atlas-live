@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T20:44:09.292521+00:00",
+  "generated_at": "2026-10-09T20:50:38.468537+00:00",
   "engine": "Intraday Atlas experimentell v0.5",
   "live_execution": false,
   "pbd_hvr_validated": false,
@@ -8,7 +8,7 @@
   "calendar_provider": "not configured",
   "calendar_coverage": "UNGEPRÜFT",
   "calendar_event_count": 0,
-  "warning": "Keine Handelsfreigabe: PbD-Proxy und HVR-Approximation sind nicht die validierten Originalindikatoren. News-Sicherheitsfilter verwendet optional Trading Economics; ohne API-Key oder eindeutig zonierte Zeitstempel ist die Prüfung unvollständig. Yahoo-Kurse können verzögert sein.",
+  "warning": "Keine Handelsfreigabe: PbD-Proxy und HVR-Python-Port ist noch nicht gegen TradingView-Signale validiert. News-Sicherheitsfilter verwendet optional Trading Economics; ohne API-Key oder eindeutig zonierte Zeitstempel ist die Prüfung unvollständig. Yahoo-Kurse können verzögert sein.",
   "markets": [
     {
       "market": "EURUSD#",
@@ -22,10 +22,11 @@
       "status": "WATCH",
       "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
       "price": 1.120574,
-      "asof": "2026-10-09T21:15:00+01:00",
+      "asof": "2026-10-09T21:30:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt oder Nullwerte"
+        "direction": null,
+        "reason": "Fehlendes oder null Volumen"
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
@@ -51,11 +52,12 @@
       "news": "UNGEPRÜFT",
       "status": "WATCH",
       "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
-      "price": 158.246994,
-      "asof": "2026-10-09T21:15:00+01:00",
+      "price": 158.261993,
+      "asof": "2026-10-09T21:30:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt oder Nullwerte"
+        "direction": null,
+        "reason": "Fehlendes oder null Volumen"
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
@@ -85,7 +87,8 @@
       "asof": "2026-10-09T17:15:00+02:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt oder Nullwerte"
+        "direction": null,
+        "reason": "Fehlendes oder null Volumen"
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
@@ -111,14 +114,12 @@
       "news": "UNGEPRÜFT",
       "status": "WATCH",
       "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
-      "price": 31119.0,
-      "asof": "2026-10-09T16:15:00-04:00",
+      "price": 31117.0,
+      "asof": "2026-10-09T16:30:00-04:00",
       "hvr_detail": {
         "state": "ZONE",
-        "direction": "SHORT",
-        "pivot": 31253.25,
-        "confirmed_at": "2026-10-09T11:00:00-04:00",
-        "reason": "Pivot 12/12, RVOL, ATR200 und Wick; vereinfachte BOSWaves-inspirierte Hold/Flip-Auswertung"
+        "direction": null,
+        "reason": "Kein neues Hold/Flip-Ereignis auf letzter Kerze"
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
@@ -157,11 +158,12 @@
       "news": "UNGEPRÜFT",
       "status": "WATCH",
       "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
-      "price": 209.488998,
-      "asof": "2026-10-09T21:15:00+01:00",
+      "price": 209.513,
+      "asof": "2026-10-09T21:30:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt oder Nullwerte"
+        "direction": null,
+        "reason": "Fehlendes oder null Volumen"
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
@@ -200,11 +202,12 @@
       "news": "UNGEPRÜFT",
       "status": "WATCH",
       "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
-      "price": 0.698959,
-      "asof": "2026-10-09T21:15:00+01:00",
+      "price": 0.699007,
+      "asof": "2026-10-09T21:30:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt oder Nullwerte"
+        "direction": null,
+        "reason": "Fehlendes oder null Volumen"
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
@@ -230,11 +233,12 @@
       "news": "UNGEPRÜFT",
       "status": "WATCH",
       "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
-      "price": 0.82996,
-      "asof": "2026-10-09T21:15:00+01:00",
+      "price": 0.83,
+      "asof": "2026-10-09T21:30:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt oder Nullwerte"
+        "direction": null,
+        "reason": "Fehlendes oder null Volumen"
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
@@ -260,14 +264,12 @@
       "news": "UNGEPRÜFT",
       "status": "WATCH",
       "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
-      "price": 51947.0,
-      "asof": "2026-10-09T16:15:00-04:00",
+      "price": 51949.0,
+      "asof": "2026-10-09T16:30:00-04:00",
       "hvr_detail": {
         "state": "ZONE",
-        "direction": "LONG",
-        "pivot": 51475.0,
-        "confirmed_at": "2026-10-09T09:45:00-04:00",
-        "reason": "Pivot 12/12, RVOL, ATR200 und Wick; vereinfachte BOSWaves-inspirierte Hold/Flip-Auswertung"
+        "direction": null,
+        "reason": "Kein neues Hold/Flip-Ereignis auf letzter Kerze"
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
