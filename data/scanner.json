@@ -1,0 +1,271 @@
+{
+  "generated_at": "2026-10-09T20:24:29.814767+00:00",
+  "engine": "Intraday Atlas experimentell v0.2",
+  "live_execution": false,
+  "news_verified": false,
+  "warning": "Keine Handelsfreigabe. PbD ist nur ein Preis-Proxy, HVR eine vereinfachte BOSWaves-inspirierte Umsetzung. News nicht angebunden. Yahoo-Daten verzögert/fehlend möglich.",
+  "markets": [
+    {
+      "market": "EURUSD#",
+      "reference": "EURUSD=X",
+      "bias": "UNKLAR",
+      "m15": "RANGE",
+      "pbd": "D (Proxy)",
+      "hvr": "n.v.",
+      "score": 0,
+      "news": "UNGEPRÜFT",
+      "status": "WATCH",
+      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "price": 1.120448,
+      "asof": "2026-10-09T21:00:00+01:00",
+      "hvr_detail": {
+        "state": "n.v.",
+        "reason": "Volumen fehlt"
+      },
+      "session": false,
+      "sweep_m15": false,
+      "displacement": false,
+      "score_components": {
+        "HTF": false,
+        "M15": false,
+        "Sweep": false,
+        "HVR": false,
+        "Session": false,
+        "Displacement": false
+      }
+    },
+    {
+      "market": "USDJPY#",
+      "reference": "JPY=X",
+      "bias": "UNKLAR",
+      "m15": "RANGE",
+      "pbd": "D (Proxy)",
+      "hvr": "n.v.",
+      "score": 1,
+      "news": "UNGEPRÜFT",
+      "status": "WATCH",
+      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "price": 158.238007,
+      "asof": "2026-10-09T21:00:00+01:00",
+      "hvr_detail": {
+        "state": "n.v.",
+        "reason": "Volumen fehlt"
+      },
+      "session": false,
+      "sweep_m15": false,
+      "displacement": true,
+      "score_components": {
+        "HTF": false,
+        "M15": false,
+        "Sweep": false,
+        "HVR": false,
+        "Session": false,
+        "Displacement": true
+      }
+    },
+    {
+      "market": "GER40Cash#",
+      "reference": "^GDAXI",
+      "bias": "UNKLAR",
+      "m15": "RANGE",
+      "pbd": "D (Proxy)",
+      "hvr": "n.v.",
+      "score": null,
+      "news": "UNGEPRÜFT",
+      "status": "NO TRADE",
+      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe; Kerzen veraltet",
+      "price": 25102.779297,
+      "asof": "2026-10-09T17:15:00+02:00",
+      "hvr_detail": {
+        "state": "n.v.",
+        "reason": "Volumen fehlt"
+      },
+      "session": false,
+      "sweep_m15": false,
+      "displacement": false,
+      "score_components": {
+        "HTF": false,
+        "M15": false,
+        "Sweep": false,
+        "HVR": false,
+        "Session": false,
+        "Displacement": false
+      }
+    },
+    {
+      "market": "US100Cash#",
+      "reference": "NQ=F",
+      "bias": "UNKLAR",
+      "m15": "RANGE",
+      "pbd": "D (Proxy)",
+      "hvr": "ZONE",
+      "score": 0,
+      "news": "UNGEPRÜFT",
+      "status": "WATCH",
+      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "price": 31115.5,
+      "asof": "2026-10-09T16:00:00-04:00",
+      "hvr_detail": {
+        "state": "ZONE",
+        "direction": "SHORT",
+        "pivot": 31253.25,
+        "reason": "Pivot 12/12, RVOL und Wick bestätigt; vereinfachte Hold/Flip-Auswertung"
+      },
+      "session": false,
+      "sweep_m15": false,
+      "displacement": false,
+      "score_components": {
+        "HTF": false,
+        "M15": false,
+        "Sweep": false,
+        "HVR": false,
+        "Session": false,
+        "Displacement": false
+      }
+    },
+    {
+      "market": "XAUJPY#",
+      "reference": "nicht zuordenbar",
+      "bias": "n.v.",
+      "m15": "n.v.",
+      "pbd": "n.v.",
+      "hvr": "n.v.",
+      "score": null,
+      "news": "UNGEPRÜFT",
+      "status": "NO TRADE",
+      "reason": "Broker-Symbol nicht eindeutig abbildbar",
+      "price": null
+    },
+    {
+      "market": "GBPJPY#",
+      "reference": "GBPJPY=X",
+      "bias": "UNKLAR",
+      "m15": "RANGE",
+      "pbd": "D (Proxy)",
+      "hvr": "n.v.",
+      "score": 1,
+      "news": "UNGEPRÜFT",
+      "status": "WATCH",
+      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "price": 209.520004,
+      "asof": "2026-10-09T21:00:00+01:00",
+      "hvr_detail": {
+        "state": "n.v.",
+        "reason": "Volumen fehlt"
+      },
+      "session": false,
+      "sweep_m15": false,
+      "displacement": true,
+      "score_components": {
+        "HTF": false,
+        "M15": false,
+        "Sweep": false,
+        "HVR": false,
+        "Session": false,
+        "Displacement": true
+      }
+    },
+    {
+      "market": "GAUUSD#",
+      "reference": "nicht zuordenbar",
+      "bias": "n.v.",
+      "m15": "n.v.",
+      "pbd": "n.v.",
+      "hvr": "n.v.",
+      "score": null,
+      "news": "UNGEPRÜFT",
+      "status": "NO TRADE",
+      "reason": "Broker-Symbol nicht eindeutig abbildbar",
+      "price": null
+    },
+    {
+      "market": "AUDUSD#",
+      "reference": "AUDUSD=X",
+      "bias": "UNKLAR",
+      "m15": "LONG",
+      "pbd": "P (Proxy)",
+      "hvr": "n.v.",
+      "score": 0,
+      "news": "UNGEPRÜFT",
+      "status": "WATCH",
+      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "price": 0.699007,
+      "asof": "2026-10-09T21:00:00+01:00",
+      "hvr_detail": {
+        "state": "n.v.",
+        "reason": "Volumen fehlt"
+      },
+      "session": false,
+      "sweep_m15": false,
+      "displacement": false,
+      "score_components": {
+        "HTF": false,
+        "M15": false,
+        "Sweep": false,
+        "HVR": false,
+        "Session": false,
+        "Displacement": false
+      }
+    },
+    {
+      "market": "USDCHF#",
+      "reference": "CHF=X",
+      "bias": "UNKLAR",
+      "m15": "RANGE",
+      "pbd": "D (Proxy)",
+      "hvr": "n.v.",
+      "score": 0,
+      "news": "UNGEPRÜFT",
+      "status": "WATCH",
+      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "price": 0.8299,
+      "asof": "2026-10-09T21:00:00+01:00",
+      "hvr_detail": {
+        "state": "n.v.",
+        "reason": "Volumen fehlt"
+      },
+      "session": false,
+      "sweep_m15": false,
+      "displacement": false,
+      "score_components": {
+        "HTF": false,
+        "M15": false,
+        "Sweep": false,
+        "HVR": false,
+        "Session": false,
+        "Displacement": false
+      }
+    },
+    {
+      "market": "US30Cash#",
+      "reference": "YM=F",
+      "bias": "UNKLAR",
+      "m15": "LONG",
+      "pbd": "D (Proxy)",
+      "hvr": "ZONE",
+      "score": 0,
+      "news": "UNGEPRÜFT",
+      "status": "WATCH",
+      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "price": 51948.0,
+      "asof": "2026-10-09T16:00:00-04:00",
+      "hvr_detail": {
+        "state": "ZONE",
+        "direction": "LONG",
+        "pivot": 51475.0,
+        "reason": "Pivot 12/12, RVOL und Wick bestätigt; vereinfachte Hold/Flip-Auswertung"
+      },
+      "session": false,
+      "sweep_m15": false,
+      "displacement": false,
+      "score_components": {
+        "HTF": false,
+        "M15": false,
+        "Sweep": false,
+        "HVR": false,
+        "Session": false,
+        "Displacement": false
+      }
+    }
+  ]
+}
