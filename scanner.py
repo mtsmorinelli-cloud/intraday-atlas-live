@@ -5,6 +5,7 @@ from datetime import datetime, timezone, timedelta
 from zoneinfo import ZoneInfo
 import pandas as pd
 import yfinance as yf
+from calendar_adapter import build_calendar
 
 MARKETS={
 "EURUSD#":"EURUSD=X","USDJPY#":"JPY=X","GER40Cash#":"^GDAXI",
@@ -87,11 +88,12 @@ def pbd_proxy(df):
     if move>2*rng and c.iloc[-1]>c.iloc[-20:-1].median():return "P (Proxy)"
     if move< -2*rng and c.iloc[-1]<c.iloc[-20:-1].median():return "B (Proxy)"
     return "D (Proxy)"
+CALENDAR = build_calendar(NOW)
+
 def news_guard(m):
     """Fail-closed calendar safety gate. No claim of verified complete news coverage."""
-    path="config/news_events.json"
     try:
-        with open(path,encoding="utf8") as f:cfg=json.load(f)
+        cfg=CALENDAR
         checked=datetime.fromisoformat(cfg["verified_at"].replace("Z","+00:00"))
         if checked.tzinfo is None:raise ValueError("Timezone missing")
         if abs((NOW-checked).total_seconds())>12*3600:
@@ -104,7 +106,7 @@ def news_guard(m):
             if at.tzinfo is None:continue
             if abs((NOW-at).total_seconds())<=1800:
                 return "NEWS BLOCK",event.get("name","High-Impact-News")
-        return "TEILWEISE GEPRÜFT","Manuell gepflegter Kalender; Vollständigkeit nicht garantiert"
+        return "TEILWEISE GEPRÜFT","Trading Economics: bekannte Termine geprüft; unerwartete News bleiben möglich"
     except Exception:return "UNGEPRÜFT","Kein aktueller verifizierter News-Kalender"
 
 def analyze(m,t):
@@ -134,7 +136,7 @@ def analyze(m,t):
     # A proxy regime or incomplete volume cannot validate the actual PbD/HVR strategy.
     safe_status="NEWS BLOCK" if news_state=="NEWS BLOCK" else ("WATCH" if not stale else "NO TRADE")
     return {**base,"price":round(price,6),"asof":m15.index[-1].isoformat(),"bias":bias1 if alignment else "UNKLAR","m15":s15 or "n.v.","pbd":pb,"hvr":hv["state"],"hvr_detail":hv,"score":score if not stale else None,"news":news_state,"news_reason":news_reason,"status":safe_status,"reason":"PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe"+("; Kerzen veraltet" if stale else ""),"session":active,"sweep_m15":bool(sweep),"displacement":bool(displacement),"score_components":{"HTF":bool(alignment),"M15":bool(aligned15),"Sweep":bool(sweep),"HVR":bool(hv_ok),"Session":bool(active),"Displacement":bool(displacement)}}
-out={"generated_at":NOW.isoformat(),"engine":"Intraday Atlas experimentell v0.3","live_execution":False,"news_verified":False,"warning":"Keine Handelsfreigabe: PbD-Proxy und HVR-Approximation sind nicht die validierten Originalindikatoren. News-Sicherheitsfilter sperrt bei dokumentierten Ereignissen; ohne gepflegten Kalender ist die Prüfung unvollständig. Yahoo-Kurse können verzögert sein.","markets":[]}
+out={"generated_at":NOW.isoformat(),"engine":"Intraday Atlas experimentell v0.4","live_execution":False,"news_verified":bool(CALENDAR.get("verified_at")),"calendar_provider":CALENDAR.get("provider"),"calendar_coverage":CALENDAR.get("coverage"),"calendar_event_count":len(CALENDAR.get("events",[])),"warning":"Keine Handelsfreigabe: PbD-Proxy und HVR-Approximation sind nicht die validierten Originalindikatoren. News-Sicherheitsfilter verwendet optional Trading Economics; ohne API-Key oder eindeutig zonierte Zeitstempel ist die Prüfung unvollständig. Yahoo-Kurse können verzögert sein.","markets":[]}
 for m,t in MARKETS.items():
     try:out["markets"].append(analyze(m,t))
     except Exception as e:out["markets"].append({"market":m,"reference":t,"status":"NO TRADE","score":None,"reason":"Daten-/Berechnungsfehler: "+type(e).__name__})
