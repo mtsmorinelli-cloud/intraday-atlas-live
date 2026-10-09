@@ -112,5 +112,20 @@ for m,t in MARKETS.items():
     try:out["markets"].append(analyze(m,t))
     except Exception as e:out["markets"].append({"market":m,"reference":t,"status":"NO TRADE","score":None,"reason":"Daten-/Berechnungsfehler: "+type(e).__name__})
 os.makedirs("data",exist_ok=True)
-with open("data/scanner.json","w",encoding="utf8") as f:json.dump(out,f,ensure_ascii=False,indent=2,allow_nan=False)
+def json_safe(value):
+    """Convert pandas/NumPy scalar values to native JSON types."""
+    import numpy as np
+    if isinstance(value, dict):
+        return {str(k): json_safe(v) for k,v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [json_safe(v) for v in value]
+    if isinstance(value, np.generic):
+        return json_safe(value.item())
+    if isinstance(value, (pd.Timestamp, datetime)):
+        return value.isoformat()
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    return value
+with open("data/scanner.json","w",encoding="utf8") as f:
+    json.dump(json_safe(out),f,ensure_ascii=False,indent=2,allow_nan=False)
 print("generated",len(out["markets"]),"markets")
