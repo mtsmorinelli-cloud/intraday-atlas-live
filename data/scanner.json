@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-09T20:24:29.814767+00:00",
-  "engine": "Intraday Atlas experimentell v0.2",
+  "generated_at": "2026-10-09T20:30:59.226446+00:00",
+  "engine": "Intraday Atlas experimentell v0.3",
   "live_execution": false,
   "news_verified": false,
-  "warning": "Keine Handelsfreigabe. PbD ist nur ein Preis-Proxy, HVR eine vereinfachte BOSWaves-inspirierte Umsetzung. News nicht angebunden. Yahoo-Daten verzögert/fehlend möglich.",
+  "warning": "Keine Handelsfreigabe: PbD-Proxy und HVR-Approximation sind nicht die validierten Originalindikatoren. News-Sicherheitsfilter sperrt bei dokumentierten Ereignissen; ohne gepflegten Kalender ist die Prüfung unvollständig. Yahoo-Kurse können verzögert sein.",
   "markets": [
     {
       "market": "EURUSD#",
@@ -15,13 +15,14 @@
       "score": 0,
       "news": "UNGEPRÜFT",
       "status": "WATCH",
-      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
       "price": 1.120448,
       "asof": "2026-10-09T21:00:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt"
+        "reason": "Volumen fehlt oder Nullwerte"
       },
+      "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
       "displacement": false,
@@ -44,13 +45,14 @@
       "score": 1,
       "news": "UNGEPRÜFT",
       "status": "WATCH",
-      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
       "price": 158.238007,
       "asof": "2026-10-09T21:00:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt"
+        "reason": "Volumen fehlt oder Nullwerte"
       },
+      "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
       "displacement": true,
@@ -73,13 +75,14 @@
       "score": null,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
-      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe; Kerzen veraltet",
+      "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe; Kerzen veraltet",
       "price": 25102.779297,
       "asof": "2026-10-09T17:15:00+02:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt"
+        "reason": "Volumen fehlt oder Nullwerte"
       },
+      "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
       "displacement": false,
@@ -102,15 +105,17 @@
       "score": 0,
       "news": "UNGEPRÜFT",
       "status": "WATCH",
-      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
-      "price": 31115.5,
+      "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
+      "price": 31113.0,
       "asof": "2026-10-09T16:00:00-04:00",
       "hvr_detail": {
         "state": "ZONE",
         "direction": "SHORT",
         "pivot": 31253.25,
-        "reason": "Pivot 12/12, RVOL und Wick bestätigt; vereinfachte Hold/Flip-Auswertung"
+        "confirmed_at": "2026-10-09T11:00:00-04:00",
+        "reason": "Pivot 12/12, RVOL, ATR200 und Wick; vereinfachte BOSWaves-inspirierte Hold/Flip-Auswertung"
       },
+      "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
       "displacement": false,
@@ -146,13 +151,14 @@
       "score": 1,
       "news": "UNGEPRÜFT",
       "status": "WATCH",
-      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
       "price": 209.520004,
       "asof": "2026-10-09T21:00:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt"
+        "reason": "Volumen fehlt oder Nullwerte"
       },
+      "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
       "displacement": true,
@@ -188,13 +194,14 @@
       "score": 0,
       "news": "UNGEPRÜFT",
       "status": "WATCH",
-      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
       "price": 0.699007,
       "asof": "2026-10-09T21:00:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt"
+        "reason": "Volumen fehlt oder Nullwerte"
       },
+      "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
       "displacement": false,
@@ -217,13 +224,14 @@
       "score": 0,
       "news": "UNGEPRÜFT",
       "status": "WATCH",
-      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
       "price": 0.8299,
       "asof": "2026-10-09T21:00:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
-        "reason": "Volumen fehlt"
+        "reason": "Volumen fehlt oder Nullwerte"
       },
+      "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
       "displacement": false,
@@ -246,15 +254,17 @@
       "score": 0,
       "news": "UNGEPRÜFT",
       "status": "WATCH",
-      "reason": "News-Kalender nicht verifiziert; keine Handelsfreigabe",
+      "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
       "price": 51948.0,
       "asof": "2026-10-09T16:00:00-04:00",
       "hvr_detail": {
         "state": "ZONE",
         "direction": "LONG",
         "pivot": 51475.0,
-        "reason": "Pivot 12/12, RVOL und Wick bestätigt; vereinfachte Hold/Flip-Auswertung"
+        "confirmed_at": "2026-10-09T09:45:00-04:00",
+        "reason": "Pivot 12/12, RVOL, ATR200 und Wick; vereinfachte BOSWaves-inspirierte Hold/Flip-Auswertung"
       },
+      "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
       "displacement": false,
