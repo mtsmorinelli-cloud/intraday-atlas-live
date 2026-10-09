@@ -18,7 +18,10 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install -r requirements.txt
-      - run: python scanner.py
+      - name: Validate source and dashboard
+        run: python -m unittest discover -s tests -v
+      - name: Calculate market snapshot
+        run: python scanner.py
       - name: Publish scanner JSON
         run: |
           git config user.name "github-actions[bot]"
