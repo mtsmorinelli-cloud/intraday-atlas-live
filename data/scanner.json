@@ -1,7 +1,9 @@
 {
-  "generated_at": "2026-10-09T20:34:42.964956+00:00",
-  "engine": "Intraday Atlas experimentell v0.4",
+  "generated_at": "2026-10-09T20:44:09.292521+00:00",
+  "engine": "Intraday Atlas experimentell v0.5",
   "live_execution": false,
+  "pbd_hvr_validated": false,
+  "validation_status": "REFERENZVERGLEICH AUSSTEHEND",
   "news_verified": false,
   "calendar_provider": "not configured",
   "calendar_coverage": "UNGEPRÜFT",
@@ -109,7 +111,7 @@
       "news": "UNGEPRÜFT",
       "status": "WATCH",
       "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
-      "price": 31115.5,
+      "price": 31119.0,
       "asof": "2026-10-09T16:15:00-04:00",
       "hvr_detail": {
         "state": "ZONE",
@@ -258,7 +260,7 @@
       "news": "UNGEPRÜFT",
       "status": "WATCH",
       "reason": "PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe",
-      "price": 51951.0,
+      "price": 51947.0,
       "asof": "2026-10-09T16:15:00-04:00",
       "hvr_detail": {
         "state": "ZONE",
