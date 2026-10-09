@@ -134,12 +134,31 @@ def analyze(m,t):
     displacement=abs(float(last["close"]-last["open"]))>1.2*float((m15["close"]-m15["open"]).abs().tail(20).mean())
     hv_ok=hv.get("state") in ("BULL_HOLD","BEAR_HOLD","BULL_FLIP","BEAR_FLIP") and hv.get("direction")==bias1
     active=session(m,NOW.astimezone(TZ))
-    # News calendar not connected: never issue actionable SETUP.
-    score=sum((alignment,aligned15,sweep,hv_ok,active,displacement))
-    # A proxy regime or incomplete volume cannot validate the actual PbD/HVR strategy.
-    safe_status="NEWS BLOCK" if news_state=="NEWS BLOCK" else ("WATCH" if not stale else "NO TRADE")
-    return {**base,"price":round(price,6),"asof":m15.index[-1].isoformat(),"bias":bias1 if alignment else "UNKLAR","m15":s15 or "n.v.","pbd":pb,"hvr":hv["state"],"hvr_detail":{k:v for k,v in hv.items() if k!="zones"},"score":score if not stale else None,"news":news_state,"news_reason":news_reason,"status":safe_status,"reason":"PbD-Proxy/HVR-Approximation und News-Vollständigkeit nicht validiert; keine Handelsfreigabe"+("; Kerzen veraltet" if stale else ""),"session":active,"sweep_m15":bool(sweep),"displacement":bool(displacement),"score_components":{"HTF":bool(alignment),"M15":bool(aligned15),"Sweep":bool(sweep),"HVR":bool(hv_ok),"Session":bool(active),"Displacement":bool(displacement)}}
-out={"generated_at":NOW.isoformat(),"engine":"Intraday Atlas experimentell v0.5","live_execution":False,"pbd_hvr_validated":False,"validation_status":"REFERENZVERGLEICH AUSSTEHEND","news_verified":bool(CALENDAR.get("verified_at")),"calendar_provider":CALENDAR.get("provider"),"calendar_coverage":CALENDAR.get("coverage"),"calendar_event_count":len(CALENDAR.get("events",[])),"warning":"Keine Handelsfreigabe: PbD-Proxy und HVR-Python-Port ist noch nicht gegen TradingView-Signale validiert. News-Sicherheitsfilter verwendet optional Trading Economics; ohne API-Key oder eindeutig zonierte Zeitstempel ist die Prüfung unvollständig. Yahoo-Kurse können verzögert sein.","markets":[]}
+    score=int(sum((alignment,aligned15,sweep,hv_ok,active,displacement)))
+    # Experimental observations are now shown even before Pine parity validation.
+    # Never convert an unverified news window or missing structural risk into a trade order.
+    qualified=bool(score>=4 and alignment and aligned15 and active and not stale and news_state!="NEWS BLOCK")
+    if news_state=="NEWS BLOCK":
+        status="NEWS BLOCK"
+    elif stale or not active:
+        status="NO TRADE"
+    elif qualified:
+        status="KANDIDAT"
+    else:
+        status="WATCH"
+    reason=("Experimenteller Kandidat: News-Kalender unvollständig, kein verifizierter Entry/SL/TP"
+            if qualified else "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet")
+    return {**base,"price":round(price,6),"asof":m15.index[-1].isoformat(),
+            "bias":bias1 if alignment else "UNKLAR","m15":s15 or "n.v.","pbd":pb,
+            "hvr":hv["state"],"hvr_detail":{k:v for k,v in hv.items() if k!="zones"},
+            "score":score if not stale else None,"news":news_state,"news_reason":news_reason,
+            "status":status,"reason":reason,"session":active,"sweep_m15":bool(sweep),
+            "displacement":bool(displacement),"experimental_candidate":qualified,
+            "score_components":{"HTF":bool(alignment),"M15":bool(aligned15),
+            "Sweep":bool(sweep),"HVR":bool(hv_ok),"Session":bool(active),
+            "Displacement":bool(displacement)}}
+
+out={"generated_at":NOW.isoformat(),"engine":"Intraday Atlas experimentell v0.6","live_execution":False,"experimental_signals_enabled":True,"pbd_hvr_validated":False,"validation_status":"REFERENZVERGLEICH AUSSTEHEND","news_verified":bool(CALENDAR.get("verified_at")),"calendar_provider":CALENDAR.get("provider"),"calendar_coverage":CALENDAR.get("coverage"),"calendar_event_count":len(CALENDAR.get("events",[])),"warning":"Experimentelle Kandidatenanzeige AKTIV, ohne Validierungswartezeit. KEINE Orderfreigabe: News unvollständig, Entry/SL/TP nicht verifiziert. PbD ist Proxy; HVR-Python-Port noch nicht abgeglichen.","markets":[]}
 for m,t in MARKETS.items():
     try:out["markets"].append(analyze(m,t))
     except Exception as e:out["markets"].append({"market":m,"reference":t,"status":"NO TRADE","score":None,"reason":"Daten-/Berechnungsfehler: "+type(e).__name__})
