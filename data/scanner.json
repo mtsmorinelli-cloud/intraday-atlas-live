@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T22:41:11.161356+00:00",
+  "generated_at": "2026-10-31T01:53:18.321991+00:00",
   "engine": "Intraday Atlas experimentell v0.6",
   "live_execution": false,
   "experimental_signals_enabled": true,
@@ -202,14 +202,14 @@
       "reference": "AUDUSD=X",
       "bias": "UNKLAR",
       "m15": "RANGE",
-      "pbd": "P (Proxy)",
+      "pbd": "D (Proxy)",
       "hvr": "n.v.",
-      "score": 0,
+      "score": null,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
       "price": 0.703532,
-      "asof": "2026-10-30T21:30:00+00:00",
+      "asof": "2026-10-30T23:30:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -241,7 +241,7 @@
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
       "price": 0.8249,
-      "asof": "2026-10-30T21:00:00+00:00",
+      "asof": "2026-10-30T23:00:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
