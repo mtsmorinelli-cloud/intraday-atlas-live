@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T19:50:12.250099+00:00",
+  "generated_at": "2026-11-13T00:44:24.498925+00:00",
   "engine": "Intraday Atlas experimentell v0.6",
   "live_execution": false,
   "experimental_signals_enabled": true,
@@ -18,12 +18,12 @@
       "m15": "RANGE",
       "pbd": "D (Proxy)",
       "hvr": "n.v.",
-      "score": 1,
+      "score": 2,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
       "price": 1.105583,
-      "asof": "2026-11-12T19:30:00+00:00",
+      "asof": "2026-11-13T00:15:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -32,7 +32,7 @@
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
-      "displacement": false,
+      "displacement": true,
       "experimental_candidate": false,
       "score_components": {
         "HTF": true,
@@ -40,7 +40,7 @@
         "Sweep": false,
         "HVR": false,
         "Session": false,
-        "Displacement": false
+        "Displacement": true
       }
     },
     {
@@ -54,8 +54,8 @@
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 159.856995,
-      "asof": "2026-11-12T19:30:00+00:00",
+      "price": 159.815002,
+      "asof": "2026-11-13T00:15:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -111,15 +111,15 @@
       "market": "US100Cash#",
       "reference": "NQ=F",
       "bias": "UNKLAR",
-      "m15": "SHORT",
+      "m15": "RANGE",
       "pbd": "D (Proxy)",
       "hvr": "ZONE",
       "score": 1,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 28357.25,
-      "asof": "2026-11-12T14:30:00-05:00",
+      "price": 28509.75,
+      "asof": "2026-11-12T19:15:00-05:00",
       "hvr_detail": {
         "state": "ZONE",
         "direction": null,
@@ -163,8 +163,8 @@
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 211.509003,
-      "asof": "2026-11-12T19:30:00+00:00",
+      "price": 211.472,
+      "asof": "2026-11-13T00:15:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -200,16 +200,16 @@
     {
       "market": "AUDUSD#",
       "reference": "AUDUSD=X",
-      "bias": "SHORT",
+      "bias": "UNKLAR",
       "m15": "RANGE",
       "pbd": "D (Proxy)",
       "hvr": "n.v.",
-      "score": 1,
+      "score": 0,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 0.680643,
-      "asof": "2026-11-12T19:30:00+00:00",
+      "price": 0.680596,
+      "asof": "2026-11-13T00:15:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -221,7 +221,7 @@
       "displacement": false,
       "experimental_candidate": false,
       "score_components": {
-        "HTF": true,
+        "HTF": false,
         "M15": false,
         "Sweep": false,
         "HVR": false,
@@ -240,8 +240,8 @@
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 0.83559,
-      "asof": "2026-11-12T19:30:00+00:00",
+      "price": 0.83596,
+      "asof": "2026-11-13T00:15:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -266,14 +266,14 @@
       "reference": "YM=F",
       "bias": "UNKLAR",
       "m15": "RANGE",
-      "pbd": "B (Proxy)",
+      "pbd": "D (Proxy)",
       "hvr": "ZONE",
-      "score": 0,
+      "score": 1,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 52496.0,
-      "asof": "2026-11-12T14:30:00-05:00",
+      "price": 52493.0,
+      "asof": "2026-11-12T19:15:00-05:00",
       "hvr_detail": {
         "state": "ZONE",
         "direction": null,
@@ -282,7 +282,7 @@
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
-      "displacement": false,
+      "displacement": true,
       "experimental_candidate": false,
       "score_components": {
         "HTF": false,
@@ -290,7 +290,7 @@
         "Sweep": false,
         "HVR": false,
         "Session": false,
-        "Displacement": false
+        "Displacement": true
       }
     }
   ]
