@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T06:13:02.313468+00:00",
+  "generated_at": "2026-11-16T16:05:57.821910+00:00",
   "engine": "Intraday Atlas experimentell v0.6",
   "live_execution": false,
   "experimental_signals_enabled": true,
@@ -18,12 +18,12 @@
       "m15": "RANGE",
       "pbd": "D (Proxy)",
       "hvr": "n.v.",
-      "score": 2,
+      "score": 1,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 1.102293,
-      "asof": "2026-11-16T05:45:00+00:00",
+      "price": 1.100837,
+      "asof": "2026-11-16T15:45:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -32,7 +32,7 @@
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
-      "displacement": true,
+      "displacement": false,
       "experimental_candidate": false,
       "score_components": {
         "HTF": true,
@@ -40,22 +40,54 @@
         "Sweep": false,
         "HVR": false,
         "Session": false,
-        "Displacement": true
+        "Displacement": false
       }
     },
     {
       "market": "USDJPY#",
       "reference": "JPY=X",
       "bias": "UNKLAR",
-      "m15": "SHORT",
+      "m15": "RANGE",
       "pbd": "D (Proxy)",
+      "hvr": "n.v.",
+      "score": 0,
+      "news": "UNGEPRÜFT",
+      "status": "NO TRADE",
+      "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
+      "price": 159.567001,
+      "asof": "2026-11-16T15:45:00+00:00",
+      "hvr_detail": {
+        "state": "n.v.",
+        "direction": null,
+        "reason": "Fehlendes oder null Volumen"
+      },
+      "news_reason": "Kein aktueller verifizierter News-Kalender",
+      "session": false,
+      "sweep_m15": false,
+      "displacement": false,
+      "experimental_candidate": false,
+      "score_components": {
+        "HTF": false,
+        "M15": false,
+        "Sweep": false,
+        "HVR": false,
+        "Session": false,
+        "Displacement": false
+      }
+    },
+    {
+      "market": "GER40Cash#",
+      "reference": "^GDAXI",
+      "bias": "UNKLAR",
+      "m15": "SHORT",
+      "pbd": "B (Proxy)",
       "hvr": "n.v.",
       "score": 1,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 159.466003,
-      "asof": "2026-11-16T05:45:00+00:00",
+      "price": 26658.970703,
+      "asof": "2026-11-16T16:45:00+01:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -76,62 +108,27 @@
       }
     },
     {
-      "market": "GER40Cash#",
-      "reference": "^GDAXI",
-      "bias": "UNKLAR",
-      "m15": "RANGE",
-      "pbd": "D (Proxy)",
-      "hvr": "n.v.",
-      "score": null,
-      "news": "UNGEPRÜFT",
-      "status": "NO TRADE",
-      "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 26755.980469,
-      "asof": "2026-11-13T17:15:00+01:00",
-      "hvr_detail": {
-        "state": "n.v.",
-        "direction": null,
-        "reason": "Fehlendes oder null Volumen"
-      },
-      "news_reason": "Kein aktueller verifizierter News-Kalender",
-      "session": false,
-      "sweep_m15": false,
-      "displacement": false,
-      "experimental_candidate": false,
-      "score_components": {
-        "HTF": false,
-        "M15": false,
-        "Sweep": false,
-        "HVR": false,
-        "Session": false,
-        "Displacement": false
-      }
-    },
-    {
       "market": "US100Cash#",
       "reference": "NQ=F",
       "bias": "UNKLAR",
-      "m15": "SHORT",
-      "pbd": "B (Proxy)",
-      "hvr": "BULL_HOLD",
-      "score": 0,
+      "m15": "RANGE",
+      "pbd": "D (Proxy)",
+      "hvr": "ZONE",
+      "score": 1,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 27701.75,
-      "asof": "2026-11-16T00:45:00-05:00",
+      "price": 27568.75,
+      "asof": "2026-11-16T10:45:00-05:00",
       "hvr_detail": {
-        "state": "BULL_HOLD",
-        "direction": "LONG",
-        "pivot": 27695.25,
-        "edge": 27673.07138573875,
-        "rvol": 1.217,
-        "reason": "BOSWaves Hold/Flip auf abgeschlossener Kerze"
+        "state": "ZONE",
+        "direction": null,
+        "reason": "Kein neues Hold/Flip-Ereignis auf letzter Kerze"
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
-      "displacement": false,
+      "displacement": true,
       "experimental_candidate": false,
       "score_components": {
         "HTF": false,
@@ -139,7 +136,7 @@
         "Sweep": false,
         "HVR": false,
         "Session": false,
-        "Displacement": false
+        "Displacement": true
       }
     },
     {
@@ -159,15 +156,15 @@
       "market": "GBPJPY#",
       "reference": "GBPJPY=X",
       "bias": "UNKLAR",
-      "m15": "SHORT",
+      "m15": "RANGE",
       "pbd": "B (Proxy)",
       "hvr": "n.v.",
       "score": 0,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 210.621994,
-      "asof": "2026-11-16T05:45:00+00:00",
+      "price": 210.399002,
+      "asof": "2026-11-16T15:45:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -205,14 +202,14 @@
       "reference": "AUDUSD=X",
       "bias": "SHORT",
       "m15": "SHORT",
-      "pbd": "B (Proxy)",
+      "pbd": "D (Proxy)",
       "hvr": "n.v.",
-      "score": 3,
+      "score": 2,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 0.675584,
-      "asof": "2026-11-16T05:45:00+00:00",
+      "price": 0.675128,
+      "asof": "2026-11-16T15:45:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -221,7 +218,7 @@
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
-      "displacement": true,
+      "displacement": false,
       "experimental_candidate": false,
       "score_components": {
         "HTF": true,
@@ -229,58 +226,26 @@
         "Sweep": false,
         "HVR": false,
         "Session": false,
-        "Displacement": true
+        "Displacement": false
       }
     },
     {
       "market": "USDCHF#",
       "reference": "CHF=X",
       "bias": "UNKLAR",
-      "m15": "SHORT",
+      "m15": "RANGE",
       "pbd": "D (Proxy)",
       "hvr": "n.v.",
-      "score": 1,
-      "news": "UNGEPRÜFT",
-      "status": "NO TRADE",
-      "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 0.83856,
-      "asof": "2026-11-16T05:45:00+00:00",
-      "hvr_detail": {
-        "state": "n.v.",
-        "direction": null,
-        "reason": "Fehlendes oder null Volumen"
-      },
-      "news_reason": "Kein aktueller verifizierter News-Kalender",
-      "session": false,
-      "sweep_m15": false,
-      "displacement": true,
-      "experimental_candidate": false,
-      "score_components": {
-        "HTF": false,
-        "M15": false,
-        "Sweep": false,
-        "HVR": false,
-        "Session": false,
-        "Displacement": true
-      }
-    },
-    {
-      "market": "US30Cash#",
-      "reference": "YM=F",
-      "bias": "UNKLAR",
-      "m15": "RANGE",
-      "pbd": "B (Proxy)",
-      "hvr": "ZONE",
       "score": 0,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 52308.0,
-      "asof": "2026-11-16T00:45:00-05:00",
+      "price": 0.83906,
+      "asof": "2026-11-16T15:45:00+00:00",
       "hvr_detail": {
-        "state": "ZONE",
+        "state": "n.v.",
         "direction": null,
-        "reason": "Kein neues Hold/Flip-Ereignis auf letzter Kerze"
+        "reason": "Fehlendes oder null Volumen"
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
@@ -294,6 +259,41 @@
         "HVR": false,
         "Session": false,
         "Displacement": false
+      }
+    },
+    {
+      "market": "US30Cash#",
+      "reference": "YM=F",
+      "bias": "UNKLAR",
+      "m15": "SHORT",
+      "pbd": "D (Proxy)",
+      "hvr": "BULL_HOLD",
+      "score": 1,
+      "news": "UNGEPRÜFT",
+      "status": "NO TRADE",
+      "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
+      "price": 52185.0,
+      "asof": "2026-11-16T10:45:00-05:00",
+      "hvr_detail": {
+        "state": "BULL_HOLD",
+        "direction": "LONG",
+        "pivot": 52081.0,
+        "edge": 52060.92840668658,
+        "rvol": 3.132,
+        "reason": "BOSWaves Hold/Flip auf abgeschlossener Kerze"
+      },
+      "news_reason": "Kein aktueller verifizierter News-Kalender",
+      "session": false,
+      "sweep_m15": false,
+      "displacement": true,
+      "experimental_candidate": false,
+      "score_components": {
+        "HTF": false,
+        "M15": false,
+        "Sweep": false,
+        "HVR": false,
+        "Session": false,
+        "Displacement": true
       }
     }
   ]
