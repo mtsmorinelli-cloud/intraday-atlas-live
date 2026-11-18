@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T17:40:51.593877+00:00",
+  "generated_at": "2026-11-18T00:00:41.008909+00:00",
   "engine": "Intraday Atlas experimentell v0.6",
   "live_execution": false,
   "experimental_signals_enabled": true,
@@ -15,15 +15,15 @@
       "market": "EURUSD#",
       "reference": "EURUSD=X",
       "bias": "UNKLAR",
-      "m15": "LONG",
-      "pbd": "P (Proxy)",
+      "m15": "RANGE",
+      "pbd": "B (Proxy)",
       "hvr": "n.v.",
-      "score": 0,
+      "score": 1,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 1.10205,
-      "asof": "2026-11-17T17:15:00+00:00",
+      "price": 1.099626,
+      "asof": "2026-11-17T23:30:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -32,7 +32,7 @@
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
-      "displacement": false,
+      "displacement": true,
       "experimental_candidate": false,
       "score_components": {
         "HTF": false,
@@ -40,22 +40,22 @@
         "Sweep": false,
         "HVR": false,
         "Session": false,
-        "Displacement": false
+        "Displacement": true
       }
     },
     {
       "market": "USDJPY#",
       "reference": "JPY=X",
       "bias": "UNKLAR",
-      "m15": "RANGE",
-      "pbd": "D (Proxy)",
+      "m15": "LONG",
+      "pbd": "P (Proxy)",
       "hvr": "n.v.",
-      "score": 0,
+      "score": 1,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 159.220001,
-      "asof": "2026-11-17T17:15:00+00:00",
+      "price": 159.526993,
+      "asof": "2026-11-17T23:30:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -64,7 +64,7 @@
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
-      "displacement": false,
+      "displacement": true,
       "experimental_candidate": false,
       "score_components": {
         "HTF": false,
@@ -72,7 +72,7 @@
         "Sweep": false,
         "HVR": false,
         "Session": false,
-        "Displacement": false
+        "Displacement": true
       }
     },
     {
@@ -110,16 +110,16 @@
     {
       "market": "US100Cash#",
       "reference": "NQ=F",
-      "bias": "SHORT",
-      "m15": "RANGE",
-      "pbd": "D (Proxy)",
+      "bias": "UNKLAR",
+      "m15": "LONG",
+      "pbd": "P (Proxy)",
       "hvr": "ZONE",
-      "score": 2,
+      "score": 0,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 27049.75,
-      "asof": "2026-11-17T12:15:00-05:00",
+      "price": 27495.5,
+      "asof": "2026-11-17T18:30:00-05:00",
       "hvr_detail": {
         "state": "ZONE",
         "direction": null,
@@ -128,15 +128,15 @@
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
-      "displacement": true,
+      "displacement": false,
       "experimental_candidate": false,
       "score_components": {
-        "HTF": true,
+        "HTF": false,
         "M15": false,
         "Sweep": false,
         "HVR": false,
         "Session": false,
-        "Displacement": true
+        "Displacement": false
       }
     },
     {
@@ -163,8 +163,8 @@
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 210.559006,
-      "asof": "2026-11-17T17:15:00+00:00",
+      "price": 210.651001,
+      "asof": "2026-11-17T23:30:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -208,8 +208,8 @@
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 0.6744,
-      "asof": "2026-11-17T17:15:00+00:00",
+      "price": 0.674309,
+      "asof": "2026-11-17T23:30:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -233,15 +233,15 @@
       "market": "USDCHF#",
       "reference": "CHF=X",
       "bias": "UNKLAR",
-      "m15": "RANGE",
-      "pbd": "B (Proxy)",
+      "m15": "LONG",
+      "pbd": "D (Proxy)",
       "hvr": "n.v.",
-      "score": 0,
+      "score": 1,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 0.83884,
-      "asof": "2026-11-17T17:15:00+00:00",
+      "price": 0.84159,
+      "asof": "2026-11-17T23:30:00+00:00",
       "hvr_detail": {
         "state": "n.v.",
         "direction": null,
@@ -250,7 +250,7 @@
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
       "sweep_m15": false,
-      "displacement": false,
+      "displacement": true,
       "experimental_candidate": false,
       "score_components": {
         "HTF": false,
@@ -258,22 +258,22 @@
         "Sweep": false,
         "HVR": false,
         "Session": false,
-        "Displacement": false
+        "Displacement": true
       }
     },
     {
       "market": "US30Cash#",
       "reference": "YM=F",
-      "bias": "UNKLAR",
+      "bias": "SHORT",
       "m15": "RANGE",
-      "pbd": "B (Proxy)",
+      "pbd": "D (Proxy)",
       "hvr": "ZONE",
       "score": 1,
       "news": "UNGEPRÜFT",
       "status": "NO TRADE",
       "reason": "Regelkonfluenz nicht ausreichend oder Daten/Session ungeeignet",
-      "price": 51016.0,
-      "asof": "2026-11-17T12:15:00-05:00",
+      "price": 50974.0,
+      "asof": "2026-11-17T18:30:00-05:00",
       "hvr_detail": {
         "state": "ZONE",
         "direction": null,
@@ -281,13 +281,13 @@
       },
       "news_reason": "Kein aktueller verifizierter News-Kalender",
       "session": false,
-      "sweep_m15": true,
+      "sweep_m15": false,
       "displacement": false,
       "experimental_candidate": false,
       "score_components": {
-        "HTF": false,
+        "HTF": true,
         "M15": false,
-        "Sweep": true,
+        "Sweep": false,
         "HVR": false,
         "Session": false,
         "Displacement": false
